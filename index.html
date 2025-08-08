@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe Randomizer</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        max-width: 400px;
+        width: 100%;
+        animation: fadeIn 0.5s ease;
+    }
+    h1 {
+        color: #ff7f50;
+        margin-bottom: 15px;
+    }
+    button {
+        padding: 10px 20px;
+        background: #ff7f50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 15px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #e0693c;
+    }
+    .recipe-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+        color: #333;
+    }
+    .ingredients, .instructions {
+        text-align: left;
+        margin-top: 10px;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🍽 Recipe Randomizer</h1>
+    <div id="recipeDisplay">
+        <p>Click the button to get a random recipe!</p>
+    </div>
+    <button onclick="getRandomRecipe()">Get Recipe</button>
+</div>
+
+<script>
+const recipes = [
+    {
+        title: "Spaghetti Aglio e Olio",
+        ingredients: [
+            "200g spaghetti",
+            "4 garlic cloves, sliced",
+            "1/4 cup olive oil",
+            "Red chili flakes",
+            "Salt & pepper"
+        ],
+        instructions: "Cook spaghetti. Sauté garlic in olive oil with chili flakes. Toss spaghetti in the garlic oil. Season and serve."
+    },
+    {
+        title: "Caprese Salad",
+        ingredients: [
+            "Fresh mozzarella",
+            "Tomatoes",
+            "Fresh basil",
+            "Olive oil",
+            "Balsamic glaze",
+            "Salt & pepper"
+        ],
+        instructions: "Slice tomatoes and mozzarella. Layer with basil. Drizzle with olive oil and balsamic glaze. Add salt and pepper to taste."
+    },
+    {
+        title: "Pancakes",
+        ingredients: [
+            "1 cup flour",
+            "2 tbsp sugar",
+            "1 tsp baking powder",
+            "1 egg",
+            "1 cup milk",
+            "Butter"
+        ],
+        instructions: "Mix dry ingredients. Whisk in milk and egg. Cook on a buttered pan until golden on both sides."
+    },
+    {
+        title: "Guacamole",
+        ingredients: [
+            "2 ripe avocados",
+            "1 lime",
+            "1/2 onion, diced",
+            "1 tomato, diced",
+            "Salt & pepper"
+        ],
+        instructions: "Mash avocados. Mix in lime juice, onion, and tomato. Season with salt and pepper."
+    },
+    {
+        title: "Fruit Smoothie",
+        ingredients: [
+            "1 banana",
+            "1 cup mixed berries",
+            "1 cup milk or yogurt",
+            "Honey"
+        ],
+        instructions: "Blend all ingredients until smooth. Serve chilled."
+    }
+];
+
+function getRandomRecipe() {
+    const randomIndex = Math.floor(Math.random() * recipes.length);
+    const recipe = recipes[randomIndex];
+
+    document.getElementById("recipeDisplay").innerHTML = `
+        <div class="recipe-title">${recipe.title}</div>
+        <div class="ingredients"><strong>Ingredients:</strong><br> - ${recipe.ingredients.join("<br> - ")}</div>
+        <div class="instructions"><strong>Instructions:</strong><br>${recipe.instructions}</div>
+    `;
+}
+</script>
+
+</body>
+</html>
